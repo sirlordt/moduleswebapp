@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletConfig;
@@ -14,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * You need the eclipse plugin "runjettyrun" or "Jetty Webapp" for run easy way the servlet
+ * 
  * Servlet implementation class CServletDownloadBigFile
  */
 @WebServlet("/")
@@ -51,7 +58,7 @@ public class CServletDownloadBigFile extends HttpServlet {
 		
 		File fileData = new File( _FILE_PATH + _FILE_NAME );
 		FileInputStream fis = new FileInputStream(fileData);
-		response.setContentType("multipart/mixed");
+		response.setContentType( "multipart/mixed" );
 		response.setHeader( "Content-Disposition", "attachment; filename=\"" + _FILE_NAME + "\";" );
 		response.setContentLength( (int) fileData.length() );
 		OutputStream os = response.getOutputStream();
@@ -104,8 +111,36 @@ public class CServletDownloadBigFile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		final String _UPLOAD_PATH = "/tmp/";
 		
-	
+		//process only if its multipart content
+        if( ServletFileUpload.isMultipartContent( request ) ){
+            
+        	try {
+
+                List<FileItem> multiparts = new ServletFileUpload( new DiskFileItemFactory() ).parseRequest( request );
+
+                for( FileItem item : multiparts ){
+                    
+                	if( !item.isFormField() ){
+                    
+                		String name = new File( item.getName() ).getName();
+                        item.write( new File( _UPLOAD_PATH + File.separator + name ) );
+                 	    System.out.println( "File Uploaded Successfully on path: " + _UPLOAD_PATH + File.separator + name );
+                        
+                    }
+                	
+                }
+
+            } 
+            catch ( Exception ex ) {
+
+         	    System.out.println( "File Upload Failed due to " + ex );
+
+            }          
+         
+        }
+        
 	}
 
 }
