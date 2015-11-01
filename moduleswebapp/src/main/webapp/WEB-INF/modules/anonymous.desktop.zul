@@ -1,0 +1,12 @@
+<?page title="anonymous" contentType="text/html;charset=UTF-8"?>
+<zk>
+  
+  <div id="divAnonymousDesktop" apply="modules.anonymous.desktop.CAnonymousDesktopController" width="100%" height="100%">
+   
+    <label value="Anonymous!" /> 
+  
+    <button id="btnLogin" label="Login" />
+  
+  </div>
+  
+</zk>

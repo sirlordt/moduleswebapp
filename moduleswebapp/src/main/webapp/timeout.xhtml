@@ -1,0 +1,35 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page title="Session timeout" ?>
+<zk>
+
+  <!--
+  <zscript>
+     Executions.sendRedirect( "/views/desktop/login/login.xhtml" );
+  </zscript>
+  -->
+
+  <!-- 
+  
+    apply="modules.CTimeoutController"
+    
+   --> 
+
+  <hbox id="timeoutLayout"  vflex="1" hflex="1" align="center" pack="center" spacing="20px">
+
+    <window hflex="min" title="Session timeout" border="normal">
+
+      <vbox align="center">
+
+        <label id="lbTimeoutMessage" value="Sorry, the page or component you request is no longer available"/>
+
+        <!-- 
+        <div style="margin-top: 10px">Return to <toolbarbutton href="/views/desktop/login/login.xhtml" label="Login page"/> </div>
+        -->
+
+      </vbox>
+
+    </window>
+
+  </hbox>
+
+</zk>

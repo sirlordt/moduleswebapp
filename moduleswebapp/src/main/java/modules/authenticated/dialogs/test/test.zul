@@ -1,0 +1,12 @@
+<?page title="Test dialog" contentType="text/html;charset=UTF-8"?>
+<zk>
+  
+  <window id="winTestDialog" apply="modules.authenticated.dialogs.test.CTestController" title="Test dialog" border="normal" closable="true">
+
+     New Content Here! 
+     
+     <button label="Left" image="WEB-INF/images/net.png" width="125px"/>
+     
+  </window>
+  
+</zk>

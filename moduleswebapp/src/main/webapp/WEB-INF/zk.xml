@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+  
+  <!-- 
+    Uncomment if you want to defines the application's name 
+  -->
+  
+  <preference>
+  
+    <name>org.zkoss.zk.ui.WebApp.name</name>
+    <value>Test modules web interface</value>
+  
+  </preference>
+
+  <device-config>
+  
+    <device-type>ajax</device-type>
+    <timeout-uri>/timeout.xhtml</timeout-uri><!-- An empty URL can cause the browser to reload the same URL -->
+  
+  </device-config>
+ 
+  <!-- Force ZK to use specific language independent from browser language 
+  <library-property>
+  
+    <name>org.zkoss.web.preferred.locale</name>
+    <value>en</value>
+  
+  </library-property>
+  -->
+   
+  <language-mapping>
+  
+    <language-name>zul</language-name>
+    <extension>xhtml</extension>
+  
+  </language-mapping>
+
+  <session-config>
+  
+    <timer-keep-alive>true</timer-keep-alive>
+  
+  </session-config>
+
+  <!-- ZK system events listener class -->
+  <listener>
+  
+    <listener-class>modules.main.zksubsystem.CZKSubsystemEvents</listener-class>
+  
+  </listener>
+
+</zk>
