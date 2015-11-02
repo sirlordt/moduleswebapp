@@ -1,7 +1,5 @@
 package modules.main.zksubsystem;
 
-import java.util.List;
-
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Session;
@@ -18,43 +16,59 @@ import org.zkoss.zk.ui.util.WebAppInit;
 public class CZKSubsystemEvents implements WebAppInit, WebAppCleanup, SessionInit, SessionCleanup, DesktopInit, DesktopCleanup, ExecutionInit, ExecutionCleanup {
 
     @Override
-    public void cleanup( Execution execution, Execution arg1, List<Throwable> arg2 ) throws Exception {
+    public void init( WebApp webapp ) throws Exception {
 
+        System.out.println( "WebApp init" );
+        
     }
 
     @Override
-    public void init( Execution execution, Execution arg1 ) throws Exception {
+    public void cleanup( WebApp webapp ) throws Exception {
+
+        System.out.println( "WebApp cleanup" );
+        
+    }
+
+    @Override
+    public void init( Session session, Object request ) throws Exception {
+
+        System.out.println( "Session init" );
+        
+    }
+
+    @Override
+    public void cleanup( Session session ) throws Exception {
+
+        System.out.println( "Session cleanup" );
+        
+    }
+
+    @Override
+    public void init( Desktop desktop, Object request ) throws Exception {
+
+        System.out.println( "Desktop init" );
 
     }
 
     @Override
     public void cleanup( Desktop desktop ) throws Exception {
 
+        System.out.println( "Desktop cleanup" );
+        
     }
 
     @Override
-    public void init( Desktop desktop, Object arg1 ) throws Exception {
+    public void init( Execution execution, Execution parent ) throws Exception {
 
+        System.out.println( "Execution init" );
+        
     }
 
     @Override
-    public void cleanup( Session session ) throws Exception {
+    public void cleanup( Execution execution, Execution parent, java.util.List<java.lang.Throwable> errs ) throws Exception {
 
-    }
-
-    @Override
-    public void init( Session session, Object arg1 ) throws Exception {
-
-    }
-
-    @Override
-    public void cleanup( WebApp webapp ) throws Exception {
-
-    }
-
-    @Override
-    public void init( WebApp webapp ) throws Exception {
-
+        System.out.println( "Execution cleanup" );
+        
     }
 
 }
